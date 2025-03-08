@@ -1,0 +1,26 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
+    volumes:
+      - ./src:/src
+    depends_on:
+      - oracle-db  
+  oracle-db:
+    image: gvenzl/oracle-xe:latest
+    environment:
+      - ORACLE_PASSWORD=123
+      - APP_USER=rodrigo
+      - APP_USER_PASSWORD=123
+    ports:
+      - "1521:1521"
+    volumes:
+      - ./init.sql:/home/oracle/init.sql
+
+volumes:
+  oracle-data:
