@@ -1,7 +1,7 @@
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
+import bcrypt from 'bcrypt';
+import User from '../models/User.js';
 
-exports.createUser = async (req, res) => {
+export async function createUser(req, res) {
   const { username, email, password, phone } = req.body;
   if (!username || !email || !password || !phone) {
     return res.status(400).json({ status: 'error', message: 'Datos incompletos' });
@@ -13,9 +13,9 @@ exports.createUser = async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   await User.create({ username, email, password: hashedPassword, phone });
   res.status(201).json({ status: 'success', message: 'User created successfully' });
-};
+}
 
-exports.loginUser = async (req, res) => {
+export async function loginUser(req, res) {
   const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ status: 'error', message: 'Falta algún campo' });
@@ -26,4 +26,4 @@ exports.loginUser = async (req, res) => {
   }
   req.session.userId = user.id;
   res.json({ status: 'success', message: 'User authenticated', sessionId: req.session.id });
-};
+}

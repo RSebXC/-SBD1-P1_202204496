@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from './config/database.js';  // ✅ Named import
+import { sequelize } from '../config/database.js';  
 
 const Product = sequelize.define('Product', {
     id: {

@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize('mi_base', 'mi_usuario', 'mi_contraseña', {
+export const sequelize = new Sequelize('bases-1', 'rodrigo', '123', {
     host: 'localhost',  
     dialect: 'oracle',  
     port: 1521, 
