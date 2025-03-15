@@ -1,10 +1,12 @@
 import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
 
-dotenv.config();
-
-export const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
-    dialect: 'oracle',
-    logging: false, // Evita spam en consola
+const sequelize = new Sequelize('mi_base', 'mi_usuario', 'mi_contraseña', {
+    host: 'localhost',  
+    dialect: 'oracle',  
+    port: 1521, 
+    dialectOptions: {
+        connectString: 'localhost/XEPDB1'
+    }
 });
 
+export default sequelize;

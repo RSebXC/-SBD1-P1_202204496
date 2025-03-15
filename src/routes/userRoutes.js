@@ -4,3 +4,4 @@ const router = express.Router();
 router.post('/', createUser);
 router.post('/login', loginUser);
 module.exports = router;
+export default router;  

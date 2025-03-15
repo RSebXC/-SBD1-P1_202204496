@@ -1,7 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
-import { sequelize } from './config/database.js'; // Configuración de Sequelize
+import { sequelize } from './config/database.js';  // ✅ Named import
 import userRoutes from './routes/userRoutes.js'; // Rutas de usuario
 import productRoutes from './routes/productRoutes.js'; // Rutas de producto
 
